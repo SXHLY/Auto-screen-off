@@ -1168,7 +1168,7 @@ class MainActivity : AppCompatActivity() {
     /** 配置更新仓库地址（github.com/owner/repo / gitee.com/owner/repo / 完整 API 地址） */
     private fun showRepoDialog() {
         val input = EditText(this).apply {
-            hint = "例如 github.com/yourname/AutoScreenOff"
+            hint = "例如 github.com/SXHLY/Auto-screen-off"
             setText(store.updateRepoUrl)
         }
         val container = LinearLayout(this).apply {

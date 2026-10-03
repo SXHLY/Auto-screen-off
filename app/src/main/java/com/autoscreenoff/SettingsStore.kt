@@ -13,6 +13,12 @@ class SettingsStore(context: Context) {
         context.getSharedPreferences("autoscreenoff_settings", Context.MODE_PRIVATE)
 
     companion object {
+        /**
+         * 默认更新仓库地址（本项目仓库）。首次安装即预置，用户点「检查更新」可直接使用；
+         * 设置页可改为其他仓库地址，也可清空以关闭更新检查。
+         */
+        const val DEFAULT_UPDATE_REPO = "github.com/SXHLY/Auto-screen-off"
+
         /** 内置常见视频/直播应用列表：包名 -> 显示名 */
         val DEFAULT_APPS: LinkedHashMap<String, String> = linkedMapOf(
             "com.ss.android.ugc.aweme" to "抖音",
@@ -223,9 +229,12 @@ class SettingsStore(context: Context) {
     // 仓库监听（同步更新）
     // ------------------------------------------------------------------
 
-    /** 更新仓库地址：github.com/owner/repo、gitee.com/owner/repo 或完整 API 地址；空=不检查 */
+    /**
+     * 更新仓库地址：github.com/owner/repo、gitee.com/owner/repo 或完整 API 地址；空=不检查。
+     * 默认值见 [DEFAULT_UPDATE_REPO]（本项目仓库），开箱即可「检查更新」。
+     */
     var updateRepoUrl: String
-        get() = sp.getString("update_repo_url", "") ?: ""
+        get() = sp.getString("update_repo_url", DEFAULT_UPDATE_REPO) ?: DEFAULT_UPDATE_REPO
         set(value) {
             sp.edit().putString("update_repo_url", value.trim()).apply()
         }
