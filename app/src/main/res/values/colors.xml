@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 品牌主色（蓝） -->
+    <color name="primary">#1E88E5</color>
+    <color name="primary_dark">#1565C0</color>
+    <color name="primary_container">#D8E9FF</color>
+    <color name="on_primary_container">#0A3A66</color>
+
+    <!-- 强调色（橙） -->
+    <color name="accent">#FF7043</color>
+
+    <!-- 页面背景 / 卡片 -->
+    <color name="bg">#F4F7FB</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F1F4F9</color>
+
+    <!-- 文字 -->
+    <color name="text_primary">#1A1C1E</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9AA0A6</color>
+    <color name="icon_tint">#5F6368</color>
+
+    <!-- 状态色 -->
+    <color name="success">#2E7D32</color>
+    <color name="success_container">#D9F2DC</color>
+    <color name="danger">#D32F2F</color>
+    <color name="danger_container">#FDE3E3</color>
+
+    <color name="ic_launcher_background">#1E88E5</color>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 网络安全策略：默认仅允许 HTTPS（GitHub/Gitee 仓库都是 HTTPS）。
+     localhost 明文例外用于本地调试更新源（adb reverse / 模拟器 10.0.2.2 场景），
+     不影响生产仓库的强制加密。 -->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">localhost</domain>
+    </domain-config>
+</network-security-config>

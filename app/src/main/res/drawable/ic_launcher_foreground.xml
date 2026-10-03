@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  应用图标前景：暖黄月牙（单一形状，无多余元素）
+
+  几何参数（108dp 画布，中心 54,54）：
+  - 外圆半径 R=33dp，月牙直径 66dp 恰等于自适应图标安全区直径
+  - 内圆半径 r=30dp，圆心沿 -25° 方向偏移 d=16dp
+  - 轮廓由「外圆长弧 + 内圆近心短弧」组成；相比「双圆+evenOdd」，
+    不会在右侧留下一块独立残片（那会让图标看起来像两个球）
+  - 开口朝右上，月牙左厚右薄
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFD98A"
+        android:pathData="M79.25,75.25A33.00,33.00 0 1 1 53.96,21.00A30.00,30.00 0 1 0 79.25,75.25Z" />
+</vector>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">自动息屏</string>
+
+    <string name="accessibility_service_label">自动息屏监测服务</string>
+    <string name="accessibility_service_description">该服务用于检测：您当前正在使用哪个应用、是否在滑动/触摸屏幕、屏幕亮灭状态，并配合加速度传感器判断手机是否静止。当您在观看视频时长时间无操作且手机静止（疑似睡着）时，自动锁定屏幕以节省电量与流量。本服务不会读取任何屏幕内容或个人数据（canRetrieveWindowContent 为 false）。</string>
+
+    <string name="device_admin_label">自动息屏（锁屏权限）</string>
+</resources>

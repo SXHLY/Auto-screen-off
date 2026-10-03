@@ -1,23 +1,38 @@
-# ---- 构建产物 ----
-build/
-.gradle/
-.cxx/
-captures/
+# ---- Android / Gradle 构建产物 ----
 *.iml
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ---- IDE ----
+.idea/
+
+# ---- 本地环境配置（含本机 SDK 路径，勿提交）----
 local.properties
 
-# ---- IDE / 编辑器 ----
-.idea/
-.vscode/
-*.hprof
+# ---- 签名与密钥（严禁提交：泄露后任何人都能伪造签名包冒充更新）----
+keystore/
+*.jks
+*.keystore
+keystore.properties
+
+# ---- 安装包（APK 通过 GitHub Releases 分发，不进版本库）----
+dist/
+
+# ---- 辅助工具目录 ----
+.venv/
+.mimosa/
+.workbuddy/
+
+# ---- 过程截图（体积大，不入库）----
+screenshots/
+
+# ---- 临时上传目录 ----
+新建文件夹/
 
 # ---- 操作系统 ----
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# ---- 签名与密钥（严禁提交）----
-*.jks
-*.keystore
-keystore.properties
-signing.properties

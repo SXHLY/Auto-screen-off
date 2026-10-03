@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FileProvider：更新 APK 的安装授权路径（应用私有外部目录 files/Download/updates/） -->
+<paths>
+    <external-files-path
+        name="updates"
+        path="Download/updates/" />
+</paths>
