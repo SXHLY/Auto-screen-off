@@ -4,12 +4,22 @@
 
 ## 下载安装
 
-最新正式签名版：**[Releases · SXHLY/Auto-screen-off](https://github.com/SXHLY/Auto-screen-off/releases/latest)**（`AutoScreenOff-v1.0.32-release.apk`，1.7 MB）
+最新正式签名版：**[Releases · SXHLY/Auto-screen-off](https://github.com/SXHLY/Auto-screen-off/releases/latest)**（`AutoScreenOff-v1.0.33-release.apk`，1.6 MB）
 - 安装：手机开启"允许安装未知来源应用"后，将 APK 传到手机点击安装；或用数据线连接后执行
-  `adb install AutoScreenOff-v1.0.32-release.apk`
+  `adb install AutoScreenOff-v1.0.33-release.apk`
+- **升级注意**：v1.0.33 起更换了签名密钥，**v1.0.32 及更早版本无法直接覆盖安装**，需先卸载旧版再安装（本机配置会丢失）
 - 要求：Android 8.0+（已适配 Android 15）
 - **无 root 要求**：全部能力（锁屏、杀后台、无障碍感知、确认弹窗）在普通手机上以用户手动授权方式实现，不需要 root / 系统签名 / 设备所有者
 - **版本号自动递增**：`version.properties` 中的 buildNumber 在每次 Gradle 打包时自动 +1（versionCode 与 versionName 同步，如 1.0.2 → versionCode=2）。升级安装请用更高版本号的包，签名保持一致（`keystore/autoscreenoff.keystore`）
+
+## v1.0.33 更换签名密钥（2026-10）
+
+原签名密钥的口令曾被误提交到公开仓库。虽然已通过重写 git 历史清除该提交，但口令一旦公开即不可撤回，因此更换了全新密钥：
+
+- 新密钥：RSA 2048 / SHA256withRSA，有效期 10000 天
+- 新旧证书指纹不同，**v1.0.32 及更早版本无法覆盖升级**，需卸载后重装
+- 构建口令改由 `keystore.properties` 提供（已由 `.gitignore` 排除），不再写入 `build.gradle.kts`
+- 除签名外无代码变更，功能与 v1.0.32 一致
 
 ## v1.0.32 仓库同步更新（2026-10）
 
