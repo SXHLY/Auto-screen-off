@@ -1,0 +1,23 @@
+# ---- 构建产物 ----
+build/
+.gradle/
+.cxx/
+captures/
+*.iml
+local.properties
+
+# ---- IDE / 编辑器 ----
+.idea/
+.vscode/
+*.hprof
+
+# ---- 操作系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 签名与密钥（严禁提交）----
+*.jks
+*.keystore
+keystore.properties
+signing.properties
