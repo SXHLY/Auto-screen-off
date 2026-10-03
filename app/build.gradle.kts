@@ -23,6 +23,27 @@ versionPropsFile.outputStream().use {
     versionProps.store(it, "Auto-incremented build number (每次打包自动 +1)")
 }
 
+// ------------------------------------------------------------------
+// 签名口令：从项目根目录的 keystore.properties 读取，该文件不入库
+// （见 .gitignore）。本仓库为公开仓库，切勿把口令写回本文件。
+//
+// 首次构建前在项目根目录创建 keystore.properties：
+//   storeFile=keystore/autoscreenoff.keystore
+//   storePassword=你的口令
+//   keyAlias=你的别名
+//   keyPassword=你的口令
+//
+// 文件缺失时 release 构建退化为未签名包，debug 构建不受影响。
+// ------------------------------------------------------------------
+val keystorePropsFile = rootProject.file("keystore.properties")
+val keystoreProps = Properties().apply {
+    if (keystorePropsFile.exists()) {
+        keystorePropsFile.inputStream().use { load(it) }
+    }
+}
+val hasSigningConfig = keystorePropsFile.exists() &&
+    keystoreProps.getProperty("storeFile") != null
+
 android {
     namespace = "com.autoscreenoff"
     compileSdk = 34
@@ -37,10 +58,13 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("../keystore/autoscreenoff.keystore")
-            storePassword = "***REMOVED***"
-            keyAlias = "autoscreenoff"
-            keyPassword = "***REMOVED***"
+            val ksPath = keystoreProps.getProperty("storeFile")
+            if (ksPath != null) {
+                storeFile = rootProject.file(ksPath)
+                storePassword = keystoreProps.getProperty("storePassword")
+                keyAlias = keystoreProps.getProperty("keyAlias")
+                keyPassword = keystoreProps.getProperty("keyPassword")
+            }
         }
     }
 
@@ -49,7 +73,7 @@ android {
             // R8 混淆 + 资源收缩：无反射/无 JNI，Manifest 组件由 AGP 自动 keep，可安全开启
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = if (hasSigningConfig) signingConfigs.getByName("release") else null
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
